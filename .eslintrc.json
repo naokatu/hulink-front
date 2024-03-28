@@ -1,3 +1,52 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "plugin:jsx-a11y/strict",
+    "next/core-web-vitals",
+    "standard-with-typescript",
+    "prettier",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "plugins": ["import-access", "sort-destructure-keys"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  },
+  "rules": {
+    "import-access/jsdoc": [
+      "error",
+      {
+        "defaultImportability": "package"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          // react を一番上に持ってくる
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          } // src へのエイリアス
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react" // react を builtin に移動するために必要
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "sort-destructure-keys/sort-destructure-keys": "error"
+  }
 }
