@@ -10,11 +10,12 @@ import HeaderImage from '../../../../public/Header-icon_v1.png'
 import { SimpleButton } from '../SimpleButton'
 
 export const Header: FC = () => {
+  // TODO　ユーザ機能実装後にちゃんと書く
   const user = null
   const [waiting, setWaiting] = useState<boolean>(false)
 
   const signIn = () => {
-    setWaiting(false)
+    setWaiting(true)
   }
 
   return (
@@ -38,7 +39,9 @@ export const Header: FC = () => {
         <Box>
           {user === null && !waiting && (
             <Link href="/auth">
-              <SimpleButton onClick={signIn}>ログイン</SimpleButton>
+              <SimpleButton onClick={signIn} bgColor={'#4FAAFF'}>
+                ログイン
+              </SimpleButton>
             </Link>
           )}
         </Box>
