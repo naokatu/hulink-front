@@ -20,11 +20,7 @@ export const Header: FC = () => {
 
   return (
     <header>
-      <Flex
-        justify="space-between"
-        alignItems="center"
-        className="bg-white shadow-lg"
-      >
+      <Flex alignItems="center" className="bg-white shadow-lg">
         <Box>
           <Link href="/">
             <Image
@@ -36,12 +32,19 @@ export const Header: FC = () => {
             ></Image>
           </Link>
         </Box>
-        <Box>
+        <Box className="ml-auto">
           {user === null && !waiting && (
             <Link href="/auth">
               <SimpleButton onClick={signIn} bgColor={'#4FAAFF'}>
                 ログイン
               </SimpleButton>
+            </Link>
+          )}
+        </Box>
+        <Box>
+          {!waiting && (
+            <Link href="/demo">
+              <SimpleButton bgColor={'#868686'}>デモを見てみる</SimpleButton>
             </Link>
           )}
         </Box>
