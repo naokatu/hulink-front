@@ -1,7 +1,10 @@
 import { type FC, type ReactNode } from 'react'
+import './global.css'
 
 import type { Metadata } from 'next'
 import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
+
+import { Header } from './components/Header/index'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,6 +15,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <html lang="ja">
       <body>
+        <Header />
         <KumaRegistry>{children}</KumaRegistry>
       </body>
     </html>
