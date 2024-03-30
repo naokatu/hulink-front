@@ -20,22 +20,20 @@ export const Header: FC = () => {
 
   return (
     <header>
-      <Flex alignItems="center" className="bg-white shadow-lg">
+      <Flex alignItems="center" className="bg-white shadow-lg h-16">
         <Box>
           <Link href="/">
             <Image
               src={HeaderImage}
               alt="ヘッダーロゴ画像"
-              width={40}
-              height={40}
-              className="py-1 mx-2"
+              className="h-16 w-16 mx-2"
             ></Image>
           </Link>
         </Box>
         <Box className="ml-auto">
           {user === null && !waiting && (
             <Link href="/auth">
-              <SimpleButton onClick={signIn} bgColor={'#4FAAFF'}>
+              <SimpleButton onClick={signIn} bgColor={'#0E8BFF'}>
                 ログイン
               </SimpleButton>
             </Link>
@@ -44,7 +42,7 @@ export const Header: FC = () => {
         <Box>
           {!waiting && (
             <Link href="/demo">
-              <SimpleButton bgColor={'#868686'}>デモを見てみる</SimpleButton>
+              <SimpleButton bgColor={'#949494'}>デモを見てみる</SimpleButton>
             </Link>
           )}
         </Box>
