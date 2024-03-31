@@ -1,10 +1,16 @@
+import { type FC, type ButtonHTMLAttributes, type ReactNode } from 'react'
+
 import { Button } from '@kuma-ui/core'
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode
   bgColor?: string
 }
-export const SimpleButton = ({ children, bgColor, ...props }: Props) => {
+export const SimpleButton: FC<Props> = ({
+  bgColor,
+  children,
+  ...props
+}: Props) => {
   return (
     <Button
       p={8}

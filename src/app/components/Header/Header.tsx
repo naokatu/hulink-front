@@ -10,11 +10,11 @@ import HeaderImage from '../../../../public/Header-icon_v1.png'
 import { SimpleButton } from '../SimpleButton'
 
 export const Header: FC = () => {
-  // TODO　ユーザ機能実装後にちゃんと書く
+  // TODO ユーザ機能実装後にちゃんと書く
   const user = null
   const [waiting, setWaiting] = useState<boolean>(false)
 
-  const signIn = () => {
+  const signIn: VoidFunction = () => {
     setWaiting(true)
   }
 
