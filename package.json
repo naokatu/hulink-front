@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@kuma-ui/core": "^1.5.6",
-    "@types/firebase": "^3.2.1",
     "firebase": "^10.10.0",
+    "firebase-admin": "^12.0.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
@@ -33,6 +33,7 @@
     "@storybook/react": "^8.0.5",
     "@storybook/test": "^8.0.5",
     "@tsconfig/strictest": "^2.0.5",
+    "@types/firebase": "^3.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
