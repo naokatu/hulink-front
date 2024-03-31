@@ -1,5 +1,6 @@
-import { Box, Flex } from '@kuma-ui/core'
 import { type FC } from 'react'
+
+import { Box, Flex } from '@kuma-ui/core'
 
 export const Footer: FC = () => {
   return (
