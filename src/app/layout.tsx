@@ -4,8 +4,8 @@ import './global.css'
 import type { Metadata } from 'next'
 import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
 
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
