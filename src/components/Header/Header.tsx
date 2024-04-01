@@ -6,7 +6,7 @@ import { Flex, Box } from '@kuma-ui/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import HeaderImage from '../../../../public/Header-icon_v1.png'
+import HeaderImage from '../../../public/Header-icon_v1.png'
 import { SimpleButton } from '../SimpleButton'
 
 export const Header: FC = () => {
