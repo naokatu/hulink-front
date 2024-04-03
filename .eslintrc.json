@@ -47,6 +47,14 @@
         "newlines-between": "always"
       }
     ],
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ],
     "sort-destructure-keys/sort-destructure-keys": "error"
   }
 }

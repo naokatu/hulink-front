@@ -1,0 +1,5 @@
+/** @public */
+export interface Inputs {
+  email: string
+  password: string
+}
