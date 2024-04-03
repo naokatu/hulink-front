@@ -6,7 +6,7 @@ interface Props {
   title: string
 }
 
-export const AuthText: FC<Props> = ({title}) => {
+export const AuthText: FC<Props> = ({ title }) => {
   return (
     <>
       <Box>
