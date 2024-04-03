@@ -6,6 +6,7 @@ import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
 
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
+import { SessionProvider } from '../provider'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,13 +15,15 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <html lang="ja">
-      <body>
-        <Header />
-        <KumaRegistry>{children}</KumaRegistry>
-        <Footer />
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang="ja">
+        <body>
+          <Header />
+          <KumaRegistry>{children}</KumaRegistry>
+          <Footer />
+        </body>
+      </html>
+    </SessionProvider>
   )
 }
 
