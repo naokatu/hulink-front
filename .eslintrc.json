@@ -47,10 +47,12 @@
         "newlines-between": "always"
       }
     ],
-    "@typescript-eslint/no-floating-promises": [
-      "warn",
+    "@typescript-eslint/no-misused-promises": [
+      2,
       {
-        "ignoreIIFE": true
+        "checksVoidReturn": {
+          "attributes": false
+        }
       }
     ],
     "sort-destructure-keys/sort-destructure-keys": "error"

@@ -29,19 +29,9 @@ export const AuthForm: FC<AuthFormProps> = ({
     register,
   } = useForm<Inputs>()
 
-  // IIFE
-  const onSubmitWrapper: SubmitHandler<Inputs> = (data) => {
-    void (async () => {
-      await onSubmit(data)
-    })()
-  }
-
   return (
     <Box className="w-64">
-      <form
-        className="flex flex-col gap-6"
-        onSubmit={handleSubmit(onSubmitWrapper)}
-      >
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
         <Input
           className="border rounded px-2 py-1"
           type="text"
