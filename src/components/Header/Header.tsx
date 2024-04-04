@@ -1,18 +1,17 @@
+'use client'
+
 import { type FC } from 'react'
 
 import { Flex, Box } from '@kuma-ui/core'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getServerSession } from 'next-auth'
-
-import { authOptions } from '@/libs/next-auth/authOptions'
+import { useSession } from 'next-auth/react'
 
 import HeaderImage from '../../../public/Header-icon_v1.png'
 import { SimpleButton } from '../SimpleButton'
 
-export const Header: FC = async () => {
-  const session = await getServerSession(authOptions)
-  const user = session?.user
+export const Header: FC = () => {
+  const { data: session, status } = useSession()
 
   return (
     <header>
@@ -27,20 +26,21 @@ export const Header: FC = async () => {
           </Link>
         </Box>
         <Box className="ml-auto">
-          {user === null && (
-            <Link href="/login">
-              <SimpleButton bgColor={'#0E8BFF'}>ログイン</SimpleButton>
-            </Link>
-          )}
-          {user !== null && (
+          {status === 'loading' ? (
+            <SimpleButton bgColor={'bg-demoColor'}>読み込み中...</SimpleButton>
+          ) : session !== null ? (
             <Link href="/my-page">
-              <SimpleButton bgColor={'#0E8BFF'}>マイページへ</SimpleButton>
+              <SimpleButton bgColor={'bg-baseColor'}>マイページへ</SimpleButton>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <SimpleButton bgColor={'bg-baseColor'}>ログイン</SimpleButton>
             </Link>
           )}
         </Box>
         <Box>
           <Link href="/demo">
-            <SimpleButton bgColor={'#949494'}>デモを見てみる</SimpleButton>
+            <SimpleButton bgColor={'bg-demoColor'}>デモを見てみる</SimpleButton>
           </Link>
         </Box>
       </Flex>

@@ -67,7 +67,7 @@ export const AuthForm: FC<AuthFormProps> = ({
           <span className="text-red-600">{errors.password?.message}</span>
         )}
 
-        <SimpleButton type="submit" bgColor="#0E8BFF">
+        <SimpleButton type="submit" bgColor={'bg-baseColor'}>
           {buttonText}
         </SimpleButton>
       </form>
