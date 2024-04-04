@@ -15,7 +15,7 @@ export const SimpleButton: FC<Props> = ({
     <Button
       p={8}
       mr={5}
-      bgColor={bgColor}
+      className={bgColor}
       color="white"
       borderRadius={6}
       {...props}
