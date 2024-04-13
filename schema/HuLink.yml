@@ -1,0 +1,401 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 0ns1vkd6jvqg1
+info:
+  title: HuLink
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/v1'
+    variables: {}
+paths:
+  /user:
+    post:
+      summary: ユーザを作成する
+      description: ''
+      operationId: post-user
+      parameters:
+        - name: authorization
+          in: header
+          description: Bearer xxx
+          style: simple
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserInput'
+        required: false
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    x-stoplight:
+                      id: yrmznrt64knab
+                    required:
+                      - user
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'
+                  errors:
+                    x-stoplight:
+                      id: e13jhr3k9iz2j
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CreateUserError'
+      deprecated: false
+    get:
+      summary: ユーザを取得する
+      description: ''
+      operationId: get-user
+      parameters:
+        - name: authorization
+          in: header
+          description: Bearer xxx
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    x-stoplight:
+                      id: rb521dch0iux4
+                    required:
+                      - user
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'
+                required:
+                  - data
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /link-user:
+    get:
+      summary: リンクユーザを一覧取得する
+      description: ''
+      operationId: get-link-user
+      parameters:
+        - name: authorization
+          in: header
+          description: Bearer xxx
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    x-stoplight:
+                      id: jcczh9v6l1dzd
+                    required:
+                      - linkUsers
+                    properties:
+                      linkUsers:
+                        x-stoplight:
+                          id: 6vzcgb1hpjtyr
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/LinkUser'
+                required:
+                  - data
+      deprecated: false
+    post:
+      summary: リンクユーザを作成する
+      description: ''
+      operationId: post-link-user
+      parameters:
+        - name: authorization
+          in: header
+          description: Bearer xxx
+          style: simple
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLinkUserInput'
+        required: false
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    x-stoplight:
+                      id: q3xqezeh3f203
+                    properties:
+                      linkUsers:
+                        type: array
+                        x-stoplight:
+                          id: d85ub4avwrqq7
+                        items:
+                          $ref: '#/components/schemas/LinkUser'
+                    required:
+                      - linkUsers
+                  errors:
+                    x-stoplight:
+                      id: nk03cm9grnxow
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CreateLinkUserError'
+      deprecated: false
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      x-stoplight:
+        id: pv7wg7wquc8el
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        linkUser:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkUser'
+        registrationDate:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - registrationDate
+    LinkUser:
+      title: LinkUser
+      required:
+        - id
+        - name
+        - encount
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        encount:
+          type: integer
+          format: int32
+        label:
+          type: string
+        sex:
+          type: string
+      x-stoplight:
+        id: 3kdv3peim2lf9
+    CreateUserInput:
+      title: CreateUserInput
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+      x-stoplight:
+        id: idvktxyqs05y9
+    CreateLinkUserInput:
+      title: CreateLinkUserInput
+      required:
+        - name
+        - encount
+      type: object
+      properties:
+        name:
+          type: string
+        encount:
+          type: string
+        label:
+          type: string
+        sex:
+          type: string
+      x-stoplight:
+        id: k38xy3it755ye
+    400ValidationError:
+      title: 400ValidationError
+      type: object
+      x-stoplight:
+        id: gizmx7j89lxtd
+      properties:
+        code:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+                x-stoplight:
+                  id: yi0r2vc6ky28l
+              message:
+                type: string
+                x-stoplight:
+                  id: rfni8yy9x50rb
+              errorcode:
+                type: string
+                x-stoplight:
+                  id: u6n2diozc8rgh
+            required:
+              - path
+              - message
+      required:
+        - code
+        - errors
+    401Error:
+      title: 401Error
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      x-stoplight:
+        id: hsk0qxenulgz3
+    500Error:
+      title: 500Error
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      x-stoplight:
+        id: ju40itmk81o3x
+    503Error:
+      title: 503Error
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      x-stoplight:
+        id: 778fsrfqpvpmk
+    Pagenation:
+      title: Pagenation
+      type: object
+      x-stoplight:
+        id: pizjxc9vamh4u
+      properties:
+        total:
+          type: integer
+    CreateUserError:
+      title: CreateUserError
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      x-stoplight:
+        id: f047kbzfvqn3a
+    CreateLinkUserError:
+      title: CreateLinkUserError
+      x-stoplight:
+        id: 937df2fe2c992
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+  responses:
+    '400':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/400ValidationError'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/401Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/500Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/503Error'
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Pagenation limit
+    offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Pagenation offset
+    authorization:
+      name: authorization
+      in: header
+      required: false
+      schema:
+        type: string
+      description: Bearer xxx
+tags: []
