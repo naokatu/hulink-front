@@ -11,7 +11,9 @@
     "format": "prettier --write \"src/**/*.tsx\"",
     "format:check": "prettier --check \"src/**/*.tsx\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "generate:interface": "openapi-typescript openapi/HuLink.yml -o src/api/schema.ts",
+    "mock": "prism mock openapi/HuLink.yml -p 4010"
   },
   "dependencies": {
     "@kuma-ui/core": "^1.5.6",
@@ -19,6 +21,7 @@
     "firebase-admin": "^12.0.0",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
+    "openapi-fetch": "^0.9.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.2"
@@ -26,6 +29,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.2.25",
     "@kuma-ui/next-plugin": "^1.2.1",
+    "@stoplight/prism-cli": "^5.7.0",
     "@storybook/addon-essentials": "^8.0.5",
     "@storybook/addon-interactions": "^8.0.5",
     "@storybook/addon-links": "^8.0.5",
@@ -51,6 +55,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-storybook": "^0.8.0",
+    "openapi-typescript": "^6.7.5",
     "postcss": "^8",
     "prettier": "^3.2.5",
     "storybook": "^8.0.5",
