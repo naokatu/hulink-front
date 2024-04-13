@@ -7,4 +7,4 @@ tsconfig.json
 postcss.config.js
 
 # src
-src/schema.ts
+src/api/schema.ts
