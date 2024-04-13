@@ -12,7 +12,8 @@
     "format:check": "prettier --check \"src/**/*.tsx\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate:interface": "openapi-typescript schema/HuLink.yml -o src/api/schema.ts"
+    "generate:interface": "openapi-typescript openapi/HuLink.yml -o src/api/schema.ts",
+    "mock": "prism mock openapi/HuLink.yml -p 4010"
   },
   "dependencies": {
     "@kuma-ui/core": "^1.5.6",
