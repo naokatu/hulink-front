@@ -12,7 +12,7 @@
     "format:check": "prettier --check \"src/**/*.tsx\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate:interface": "openapi-typescript schema/HuLink.yml -o src/schema.ts"
+    "generate:interface": "openapi-typescript schema/HuLink.yml -o src/api/schema.ts"
   },
   "dependencies": {
     "@kuma-ui/core": "^1.5.6",
