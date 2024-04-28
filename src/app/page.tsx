@@ -1,17 +1,11 @@
-import { Text } from '@kuma-ui/core'
 import { type NextPage } from 'next'
 
-import ServerComponent from '@/components/ServerComponent'
-import ClientComponent from '@/components/clientComponent'
+import { LP } from '@/components/LP'
 
 const Home: NextPage = () => {
   return (
     <main>
-      <ClientComponent />
-      <Text color="blue" fontSize="16px" fontWeight="bold">
-        Hello world
-      </Text>
-      <ServerComponent />
+      <LP></LP>
     </main>
   )
 }
