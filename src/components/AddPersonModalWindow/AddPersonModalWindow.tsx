@@ -10,7 +10,7 @@ interface AddPersonModalWindowProps {
   isOpen: boolean
   onClose: () => void
   buttonType: string | null
-  linkUser: Array<string> | null
+  linkUser: string[] | null
   addPersonSubmit: (data: InputsLinkUser) => void
   selectPersonSubmit: (data: InputsLinkUser) => void
 }
@@ -18,8 +18,8 @@ interface AddPersonModalWindowProps {
 export const AddPersonModalWindow: FC<AddPersonModalWindowProps> = ({
   addPersonSubmit,
   buttonType,
-  linkUser,
   isOpen,
+  linkUser,
   onClose,
   selectPersonSubmit,
 }) => {

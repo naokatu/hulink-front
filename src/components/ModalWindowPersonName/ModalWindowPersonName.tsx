@@ -9,15 +9,15 @@ import { ModalWindowAddPerson } from '../ModalWindowAddPerson'
 
 interface ModalWindowPersonNameProps {
   buttonType: string | null
-  linkUser: Array<string> | null
+  linkUser: string[] | null
   register: any
   errors: any
 }
 
 export const ModalWindowPersonName: FC<ModalWindowPersonNameProps> = ({
   buttonType,
-  linkUser,
   errors,
+  linkUser,
   register,
 }) => {
   return (

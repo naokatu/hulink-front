@@ -13,7 +13,7 @@ import { ModalWindowCheckBox } from '../ModalWindowCheckBox'
 interface ModalWindowFormProps {
   onClose: () => void
   buttonType: string | null
-  linkUser: Array<string> | null
+  linkUser: string[] | null
   addPersonSubmit: (data: InputsLinkUser) => void
   selectPersonSubmit: (data: InputsLinkUser) => void
 }

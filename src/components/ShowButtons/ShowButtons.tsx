@@ -31,7 +31,9 @@ export const ShowButtons: FC<ShowButtonsProps> = ({
               <Box>
                 <Button
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-full text-xl mx-1"
-                  onClick={() => { onAddPerson('select'); }}
+                  onClick={() => {
+                    onAddPerson('select')
+                  }}
                 >
                   <Image
                     src={SelectPersonIconImage}
@@ -51,7 +53,9 @@ export const ShowButtons: FC<ShowButtonsProps> = ({
               <Box>
                 <Button
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full text-2xl py-4 px-4 mx-2"
-                  onClick={() => { onAddPerson('add'); }}
+                  onClick={() => {
+                    onAddPerson('add')
+                  }}
                 >
                   <Image
                     src={AddPersonIconImage}

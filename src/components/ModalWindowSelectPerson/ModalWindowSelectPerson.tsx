@@ -3,14 +3,14 @@ import { type FC } from 'react'
 import { Text, Select } from '@kuma-ui/core'
 
 interface ModalWindowSelectPersonProps {
-  linkUser: Array<string> | null
+  linkUser: string[] | null
   register: any
   errors: any
 }
 
 export const ModalWindowSelectPerson: FC<ModalWindowSelectPersonProps> = ({
-  linkUser,
   errors,
+  linkUser,
   register,
 }) => {
   return (

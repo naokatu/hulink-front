@@ -51,7 +51,7 @@ export const ModalWindowCheckBox: FC<ModalWindowCheckBoxProps> = ({
           </Box>
         ))}
       </Flex>
-      {errors.interact && (
+      {errors.interact != null && (
         <Text className="text-red-500 block">{errors.interact.message}</Text>
       )}
     </Flex>
