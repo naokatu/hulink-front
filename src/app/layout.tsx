@@ -3,6 +3,7 @@ import './global.css'
 
 import type { Metadata } from 'next'
 import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
+import { Box } from '@kuma-ui/core'
 
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <SessionProvider>
-      <html lang="ja" suppressHydrationWarning={true}>
+      <html lang="ja" suppressHydrationWarning={true} className="relative">
         <body className="overflow-x-hidden">
           <Header />
-          <KumaRegistry>{children}</KumaRegistry>
+          <Box className="pt-16 pb-8">
+            <KumaRegistry>{children}</KumaRegistry>
+          </Box>
           <Footer />
         </body>
       </html>
