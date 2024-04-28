@@ -36,9 +36,11 @@ export interface components {
     LinkUser: {
       /** Format: uuid */
       id: string;
+      /** Format: uuid */
+      userId: string;
       name: string;
       /** Format: int32 */
-      encount: number;
+      weight: number;
       label?: string;
       sex?: string;
     };
@@ -49,9 +51,11 @@ export interface components {
     /** CreateLinkUserInput */
     CreateLinkUserInput: {
       name: string;
-      encount: string;
+      interact: string[];
       label?: string;
       sex?: string;
+      /** Format: uuid */
+      userId?: string;
     };
     /** 400ValidationError */
     "400ValidationError": {
@@ -234,7 +238,7 @@ export interface operations {
         content: {
           "application/json": {
             data?: {
-              linkUsers: components["schemas"]["LinkUser"][];
+              linkUser: components["schemas"]["LinkUser"];
             };
             errors?: components["schemas"]["CreateLinkUserError"][];
           };
