@@ -15,7 +15,10 @@ export const Header: FC = () => {
 
   return (
     <header>
-      <Flex alignItems="center" className="bg-white shadow-lg h-16">
+      <Flex
+        alignItems="center"
+        className="bg-white w-screen shadow-lg fixed h-16 top-0"
+      >
         <Box>
           <Link href="/">
             <Image
