@@ -1,4 +1,5 @@
 import type { NextAuthOptions, DefaultSession } from 'next-auth'
+// eslint-disable-next-line import/no-named-as-default
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 import { auth as authAdmin } from '@/libs/firebase/admin'

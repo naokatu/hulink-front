@@ -22,6 +22,7 @@ export const Header: FC = () => {
               src={HeaderImage}
               alt="ヘッダーロゴ画像"
               className="h-16 w-16 mx-2"
+              priority
             ></Image>
           </Link>
         </Box>

@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <SessionProvider>
-      <html lang="ja">
-        <body>
+      <html lang="ja" suppressHydrationWarning={true}>
+        <body className="overflow-x-hidden">
           <Header />
           <KumaRegistry>{children}</KumaRegistry>
           <Footer />
