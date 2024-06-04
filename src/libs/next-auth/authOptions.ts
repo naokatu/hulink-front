@@ -11,6 +11,7 @@ declare module 'next-auth' {
       uid: string
       emailVerified?: boolean
     } & DefaultSession['user']
+    idToken?: string
   }
 }
 
@@ -19,6 +20,7 @@ declare module 'next-auth/jwt' {
     // Firebaseの認証情報
     uid: string
     emailVerified: boolean
+    idToken: string
   }
 }
 
@@ -34,9 +36,8 @@ export const authOptions: NextAuthOptions = {
           try {
             const decoded = await authAdmin.verifyIdToken(idToken)
 
-            return { ...decoded }
+            return { ...decoded, idToken }
           } catch (err) {
-            console.error('aaa')
             console.error(err)
           }
         }
@@ -55,6 +56,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.user.emailVerified = token.emailVerified
       session.user.uid = token.uid
+      session.idToken = token.idToken
       return session
     },
   },
