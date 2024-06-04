@@ -18,6 +18,7 @@ import {
   generateAddEdge,
 } from '@/utils/initGenerator'
 import { type InputsLinkUser } from '@/types/inputsLinkUser'
+import { getIdTokenFromSession } from '@/libs/next-auth/getIdTokenFromSession'
 
 import { PlusButton } from '../PlusButton/'
 import { ShowButtons } from '../ShowButtons/'
@@ -57,10 +58,11 @@ export const MyPage: FC = () => {
 
   useEffect(() => {
     const fetchUser = async (): Promise<void> => {
+      const token = await getIdTokenFromSession()
       const res = await client.GET('/user', {
         params: {
           header: {
-            authorization: 'Bearer xxx',
+            authorization: `Bearer ${token}`,
           },
         },
       })
@@ -88,7 +90,6 @@ export const MyPage: FC = () => {
     linkUser: components['schemas']['LinkUser'] | null,
   ): void => {
     if (linkUser != null) {
-      console.log(linkUser.name)
       const addNode: Node = generateAddNode(linkUser, nodes)
       const addEdge: Edge = generateAddEdge(user, linkUser)
 
@@ -99,10 +100,11 @@ export const MyPage: FC = () => {
 
   const addPersonSubmit = async (data: InputsLinkUser): Promise<void> => {
     if (user !== null) {
+      const token = await getIdTokenFromSession()
       const res = await client.POST('/link-user', {
         params: {
           header: {
-            authorization: 'Bearer xxx',
+            authorization: `Bearer ${token}`,
           },
         },
         body: {
@@ -120,10 +122,11 @@ export const MyPage: FC = () => {
 
   const selectPersonSubmit = async (data: InputsLinkUser): Promise<void> => {
     if (user !== null) {
+      const token = await getIdTokenFromSession()
       const res = await client.POST('/link-user', {
         params: {
           header: {
-            authorization: 'Bearer xxx',
+            authorization: `Bearer ${token}`,
           },
         },
         body: {
