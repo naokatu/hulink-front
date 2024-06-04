@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { signIn as signInByNextAuth } from 'next-auth/react'
 import { type SubmitHandler } from 'react-hook-form'
 
+import { client } from '@/api'
 import { auth as authClient } from '@/libs/firebase/client'
 import { type Inputs } from '@/types/inputs'
 
@@ -23,6 +24,16 @@ export const Register: FC = () => {
         data.password,
       )
       const idToken = await userCredential.user.getIdToken()
+      await client.POST('/user', {
+        params: {
+          header: {
+            authorization: `Bearer ${idToken}`,
+          },
+        },
+        body: {
+          name: 'あなた',
+        },
+      })
       await signInByNextAuth('credentials', {
         idToken,
         callbackUrl: '/my-page',
