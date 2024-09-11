@@ -139,7 +139,6 @@ export const MyPage: FC = () => {
       const linkUser: components['schemas']['LinkUser'] | null =
         res.data?.data?.linkUser ?? null
 
-      console.log(linkUser?.name)
       generateAddNodesAndEdges(user, linkUser)
     }
   }
