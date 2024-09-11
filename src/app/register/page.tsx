@@ -1,9 +1,8 @@
-import React from 'react'
-import { type FC } from 'react'
+import React, { type FC } from 'react'
 
 import { Register } from '@/components/Register/'
 
-export const RegisterPage: FC = () => {
+const RegisterPage: FC = () => {
   return <Register></Register>
 }
 
