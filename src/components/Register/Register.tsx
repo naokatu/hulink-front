@@ -3,7 +3,7 @@
 import { type FC } from 'react'
 
 import { Flex } from '@kuma-ui/core'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth'
 import { signIn as signInByNextAuth } from 'next-auth/react'
 import { type SubmitHandler } from 'react-hook-form'
 
@@ -24,20 +24,26 @@ export const Register: FC = () => {
         data.password,
       )
       const idToken = await userCredential.user.getIdToken()
-      await client.POST('/user', {
-        params: {
-          header: {
-            authorization: `Bearer ${idToken}`,
+      try {
+        await client.POST('/user', {
+          params: {
+            header: {
+              authorization: `Bearer ${idToken}`,
+            },
           },
-        },
-        body: {
-          name: 'あなた',
-        },
-      })
-      await signInByNextAuth('credentials', {
-        idToken,
-        callbackUrl: '/my-page',
-      })
+          body: {
+            name: 'あなた',
+          },
+        })
+        await signInByNextAuth('credentials', {
+          idToken,
+          callbackUrl: '/my-page',
+        })
+      } catch {
+        // backendのリクエストに失敗した場合、登録したユーザは削除
+        await deleteUser(userCredential.user)
+        alert('登録に失敗しました')
+      }
     } catch (error) {
       alert(error)
     }
