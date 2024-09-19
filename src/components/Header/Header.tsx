@@ -29,7 +29,7 @@ export const Header: FC = () => {
             ></Image>
           </Link>
         </Box>
-        <Box className="ml-auto">
+        <Box className="ml-auto mx-3">
           {status === 'loading' ? (
             <SimpleButton bgColor={'bg-demoColor'}>読み込み中...</SimpleButton>
           ) : session !== null ? (
@@ -41,11 +41,6 @@ export const Header: FC = () => {
               <SimpleButton bgColor={'bg-baseColor'}>ログイン</SimpleButton>
             </Link>
           )}
-        </Box>
-        <Box>
-          <Link href="/demo">
-            <SimpleButton bgColor={'bg-demoColor'}>デモを見てみる</SimpleButton>
-          </Link>
         </Box>
       </Flex>
     </header>
