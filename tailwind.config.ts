@@ -15,7 +15,7 @@ const config: Config = {
       },
       colors: {
         baseColor: '#0E8BFF',
-        demoColor: '#949494',
+        unBaseColor: '#949494',
         topTextColor: '#007FFF',
       },
       animation: {
