@@ -17,7 +17,7 @@ export const generateInitNodes = (
     },
   }
 
-  const linkUserNodes = (user.linkUser ?? []).map((linkUser, index) => {
+  const linkUserNodes = (user.linkUsers ?? []).map((linkUser, index) => {
     const angle = index * ANGLE_STEP
     const x = RADIUS * Math.cos(angle)
     const y = RADIUS * Math.sin(angle)
