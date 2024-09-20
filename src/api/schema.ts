@@ -14,8 +14,14 @@ export interface paths {
   "/link-user": {
     /** リンクユーザを一覧取得する */
     get: operations["get-link-user"];
+    /** リンクユーザを更新する */
+    put: operations["put-link-user"];
     /** リンクユーザを作成する */
     post: operations["post-link-user"];
+  };
+  "/health": {
+    /** Your GET endpoint */
+    get: operations["get-health"];
   };
 }
 
@@ -28,9 +34,7 @@ export interface components {
       /** Format: uuid */
       id: string;
       name: string;
-      linkUser?: components["schemas"]["LinkUser"][];
-      /** Format: date-time */
-      registrationDate: string;
+      linkUsers?: components["schemas"]["LinkUser"][];
     };
     /** LinkUser */
     LinkUser: {
@@ -40,7 +44,7 @@ export interface components {
       userId: string;
       name: string;
       /** Format: int32 */
-      weight: number;
+      weight?: number;
       label?: string;
       sex?: string;
     };
@@ -55,7 +59,16 @@ export interface components {
       label?: string;
       sex?: string;
       /** Format: uuid */
-      userId?: string;
+      userId: string;
+    };
+    /** UpdateLinkUserInput */
+    UpdateLinkUserInput: {
+      name: string;
+      interact: string[];
+      label?: string;
+      sex?: string;
+      /** Format: uuid */
+      userId: string;
     };
     /** 400ValidationError */
     "400ValidationError": {
@@ -94,6 +107,14 @@ export interface components {
     CreateLinkUserError: {
       code: string;
       message: string;
+    };
+    "CreateLinkUserInput - copy": {
+      name: string;
+      /** Format: uuid */
+      userId: string;
+      interact: string[];
+      label?: string;
+      sex?: string;
     };
   };
   responses: {
@@ -217,6 +238,21 @@ export interface operations {
       };
     };
   };
+  /** リンクユーザを更新する */
+  "put-link-user": {
+    parameters: {
+      header?: {
+        /** @description Bearer xxx */
+        authorization?: string;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** リンクユーザを作成する */
   "post-link-user": {
     parameters: {
@@ -241,6 +277,19 @@ export interface operations {
               linkUser: components["schemas"]["LinkUser"];
             };
             errors?: components["schemas"]["CreateLinkUserError"][];
+          };
+        };
+      };
+    };
+  };
+  /** Your GET endpoint */
+  "get-health": {
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": {
+            status: string;
           };
         };
       };
