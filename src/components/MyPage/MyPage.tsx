@@ -164,8 +164,8 @@ export const MyPage: FC = () => {
         onClose={closeModal}
         buttonType={buttonType}
         linkUser={
-          user?.linkUser != null
-            ? user?.linkUser.map((linkUser) => linkUser.name)
+          user?.linkUsers != null
+            ? user?.linkUsers.map((linkUser) => linkUser.name)
             : null
         }
         addPersonSubmit={addPersonSubmit}

@@ -5,7 +5,7 @@ import { type components } from '@/api'
 export const generateInitEdges = (
   user: components['schemas']['User'],
 ): Edge[] => {
-  return (user.linkUser ?? []).map((link) => ({
+  return (user.linkUsers ?? []).map((link) => ({
     id: `e-${user.id}-${link.id}`,
     source: user.id,
     target: link.id + '1',
